@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Clothes Inventory Page</title>
+    </head>
+    <body>
+        <div>
+            <h1>Clothes Inventory</h1>
+            
+            <form method="get" action="{% url 'product-list' %}">
+                <div class="row">
+                
+                <!-- Search bar and filters -->
+                <input type="text" name="query" placeholder="Search by description" value="{{ query | default:'' }}" aria-label="Search"/>
+
+                <select name="category" aria-label="Category">
+
+                    <option value="">All categories</option>
+                    {% for c in categories %}
+                        <option value="{{ c.id }}" {% if selected_category|default:'' == c.id|stringformat:"s" %} selected {% endif %}>
+                            {{ c.name }}
+                        </option>
+                    {% endfor %}
+
+                </select>
+
+                <button type="submit">Apply</button>
+                    <a href="{% url 'product-list' %}"> Reset </a>
+                </div>
+
+                <fieldset style="border:none; margin-top:.25rem; padding:0;">
+                <legend style="font-weight:600; margin-bottom:.25rem;">Tags</legend>
+                <div class="tags">
+                    {% for t in tags %}
+                    <label>
+                        <input type="checkbox" name="tags" value="{{ t.id }}" {% if t.id in selected_tags %}checked{% endif %}/>
+                        {{ t.name }}
+                    </label>
+                    {% endfor %}
+                </div>
+                </fieldset>
+            </form>
+
+            <!-- Item list -->
+            <ul>
+                {% for p in products %}
+                  <li>
+                    <div>
+                      <strong>{{ p.name }}</strong>
+                      {% if p.category %} — {{ p.category.name }}{% endif %}
+                    </div>
+              
+                    <div class="tags">
+                      Tags:
+                      {% for t in p.tags.all %}
+                        <span class="tagItem"> {{ t.name }} </span> {% if not forloop.last %}, {% endif %}
+                      {% empty %}
+                        -
+                      {% endfor %}
+                    </div>
+              
+                    {% if p.description %}
+                      <div><em>{{ p.description }}</em></div>
+                    {% endif %}
+                  </li>
+                {% empty %}
+                  <li>No matching products.</li>
+                {% endfor %}
+              </ul>
+
+            </form>
+        </div>
+    </body>
+</html>
