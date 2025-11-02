@@ -50,7 +50,7 @@ python -c "from django.core.management.utils import get_random_secret_key; print
 ```
 
 ## 4) Database Migrations
-Run the following commands to set up the database:
+Run the following commands to set up the database. I pushed my db.sqlite3, so the data I generated should still be there after migrations are complete:
 ```bash
 # Create migration files
 python manage.py makemigrations
@@ -69,4 +69,4 @@ The application should now be accessible at `http://127.0.0.1:8000/`
 
 # Additional Notes
 
-For clarity, I used ChatGPT to help come up with the sample data of 20 clothing products, but not for the actual code. Likewise, I used Github Copilot for simple HTML formatting, specifically for the <fieldset> and <legend> portion of product_list.html.
+For clarity, I used ChatGPT to help come up with the sample data of 20 clothing products, but not for the actual code. Also, I used Github Copilot for simple HTML formatting, specifically for the fieldset and legend portion of product_list.html.
