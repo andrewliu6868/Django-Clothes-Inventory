@@ -8,7 +8,7 @@ The UI is a simple Django HTML template that allows users to search for products
 
 ## 1) Create python virtual environment and git clone
 
-Before cloning, set-up a python virtual environment:
+Before cloning, set-up a python virtual environment so the dependencies you will need for this project won't affect dependencies on your system:
 
 ```bash
 # Create virtual environment
@@ -20,8 +20,11 @@ venv\Scripts\activate
 # On macOS/Linux:
 source venv/bin/activate
 
+```
+Next, create a repo locally on your computer and git clone this project. Use the following command:
+```bash
 # Clone the repository
-git clone 
+git clone https://github.com/andrewliu6868/Django-Clothes-Inventory.git
 cd ./myClothesShop
 ```
 
