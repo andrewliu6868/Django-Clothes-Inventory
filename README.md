@@ -22,7 +22,7 @@ source venv/bin/activate
 
 # Clone the repository
 git clone 
-cd
+cd ./myClothesShop
 ```
 
 
